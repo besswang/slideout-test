@@ -41,38 +41,97 @@
             </li>
         </ul>
     </article>
+    <div style="margin-top:46px;">
+        <ul>
+            <li class="flex flex-row flex-align-center box_appmsg">
+                <div class="box_hd">
+                    <img class="box_thumb" src="https://s1.ax1x.com/2017/12/13/qBTmt.jpg" alt="">
+                </div>
+                <div class="flex-1 list-info">
+                    <p id="gname">商品一</p>
+                    <span id="price">50.00</span>/<span id="unit">个</span>
+                </div>
+                <a href="#" class="number_select plus" id="plus" onclick="plus(this)">+</a>
+            </li>
+        </ul>
+    </div>
+    <!--footer-->
+    <ul class="flex flex-row flex-align-center footer">
+        <li class="car-box">
+            <img id="cart" class="cart" src="https://s1.ax1x.com/2017/12/13/qBAsI.png" alt="">
+            <span class="weui-badge" id="badge" style="position: absolute; top:0; right: -0.4em;">0</span>
+        </li>
+        <li class="flex-1" style="color:#fff;">￥110.00</li>
+        <li class="order-btn"><a href="#">下单</a></li>
+    </ul>
 </main>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<!--添加商品飞入效果-->
+<script src="jquery.fly.js"></script>
+<!--点击个人中心左滑效果-->
 <script type="text/javascript" src="slideout.js"></script>
 <script type="text/javascript">
-    var flag = 1 //;是否登录；1：登录，0:未登录
-    if(flag == 1){
-        $("#toggle-btn").addClass("js-slideout-toggle")
-        if($("#toggle-btn").hasClass("js-slideout-toggle")){
-        // 左边菜单滑动-start
-            var slideout = new Slideout({
-                'panel': document.getElementById('main'),
-                'menu': document.getElementById('menu'),
-                'padding': 256,
-                'tolerance': 70
-            });
-            document.querySelector('.js-slideout-toggle').addEventListener('click', function() {
-                slideout.toggle();
-            });
-            // 点击遮罩，收回侧边栏
-            document.querySelector('.shade').addEventListener('click', function() {
-                slideout.toggle();
-            });
-            document.querySelector('.menu').addEventListener('click', function(eve) {
-                if (eve.target.nodeName === 'A') { slideout.close(); }
-            });
-        // 左边菜单滑动-end
+    $(function () {
+        var flag = 1 //;是否登录；1：登录，0:未登录
+        if(flag == 1){
+            $("#toggle-btn").addClass("js-slideout-toggle")
+            if($("#toggle-btn").hasClass("js-slideout-toggle")){
+                // 左边菜单滑动-start
+                var slideout = new Slideout({
+                    'panel': document.getElementById('main'),
+                    'menu': document.getElementById('menu'),
+                    'padding': 256,
+                    'tolerance': 70
+                });
+                document.querySelector('.js-slideout-toggle').addEventListener('click', function() {
+                    slideout.toggle();
+                });
+                // 点击遮罩，收回侧边栏
+                document.querySelector('.shade').addEventListener('click', function() {
+                    slideout.toggle();
+                });
+                document.querySelector('.menu').addEventListener('click', function(eve) {
+                    if (eve.target.nodeName === 'A') { slideout.close(); }
+                });
+                // 左边菜单滑动-end
+            }
+        }else{
+            $("#toggle-btn").removeClass("js-slideout-toggle");
+            $("#toggle-btn").click(function () {
+                alert("请登录");
+            })
         }
-    }else{
-        $("#toggle-btn").removeClass("js-slideout-toggle");
-        $("#toggle-btn").click(function () {
-            alert("请登录");
-        })
+    })
+
+
+    function plus(obj,e) {
+        var ev = window.event || e;
+        addFly(ev);
+        var num = Number($("#badge").text());
+        num += 1
+        $("#badge").text(num)
+    }
+    // 添加购物车飞入效果
+    function addFly(e) {
+        var ev =  window.event || e;
+        // var offset = $('#amount').offset(), flyer = $('<img class="u-flyer" src="logo.png"/>');
+        var offset = $('#cart').offset(), flyer = $('<div class="u-flyer"></div>');
+        flyer.fly({
+            start: {
+                left: ev.pageX-40,
+                top: ev.pageY-20
+            },
+            end: {
+                left: offset.left,
+                top: offset.top,
+                width: 24,
+                height: 24
+            },
+            onEnd:function(){
+                // $("#tip").show().animate({width: '200px'},300).fadeOut(500);////成功加入购物车动画效果
+                this.destroy(); //销毁抛物体
+            }
+        });
     }
 
 </script>
