@@ -9,7 +9,7 @@
 .clear{clear:both; height:0; line-height:0; font-size:0; overflow:hidden;margin:0px;padding:0px;}
 ul,li{padding:0;margin:0;}
 li{list-style:none;}
-
+p{margin:0;}
 .header {
   width: 100%;
   border-bottom: 1px solid #d3d3d3;
@@ -18,7 +18,7 @@ li{list-style:none;}
   top: 0;
   left: 0;
   z-index: 10;
-  background: #00a1e9;
+  background: #71B7FD;
 }
 .btn-hamburger {
   width: 28px;
@@ -52,4 +52,90 @@ li{list-style:none;}
   right: 0;
   z-index: 11;
   display: none;
+}
+.box_appmsg{
+  padding: 10px 15px;
+  border-bottom: 1px dashed #ccc;
+}
+.box_appmsg .box_hd {
+  font-size: 0;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  position: relative;
+}
+.box_appmsg .box_thumb {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+.number_select {
+  float: left;
+  display: block;
+  background-color: #71B7FD;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  border-radius: 15px;
+}
+.list-info {
+  margin-left: .8em;
+}
+.footer {
+  width:100%;
+  height:46px;
+  position: fixed;
+  left:0;
+  bottom:0;
+  background:black;
+  z-index: 10;
+}
+.car-box{
+  width:32px;
+  position:relative;
+  margin:0 15px;
+}
+.car-box .cart{
+  display:block;
+  width:100%;
+  margin:3px 0;
+}
+.order-btn{
+  width:100px;
+  height:100%;
+}
+.order-btn a{
+  display:block;
+  width:100%;
+  height:100%;
+  text-align:center;
+  color:#fff;
+  background:#71B7FD;
+  line-height:46px;
+}
+.weui-badge {
+  display: inline-block;
+  padding: .15em .4em;
+  min-width: 8px;
+  border-radius: 18px;
+  background-color: #F43530;
+  color: #FFFFFF;
+  line-height: 1.2;
+  text-align: center;
+  font-size: 12px;
+  vertical-align: middle;
+}
+.u-flyer{
+  width:20px;
+  height:20px;
+  background:#71B7FD;
+  border-radius:50%;
 }
