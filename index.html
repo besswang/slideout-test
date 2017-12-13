@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>移动手机的侧边栏滑动</title>
+<link rel="stylesheet" href="slideout.css">
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<nav id="menu" class="menu">
+  <a href="#" target="_blank">
+    <header class="menu-header">
+      <span class="menu-header-title">个人中心</span>
+    </header>
+  </a>
+  <section class="menu-section">
+    <h3 class="menu-section-title">姓名</h3>
+    <ul class="menu-section-list">
+      <li><a href="#" target="_blank">我的订单</a></li>
+      <li><a href="#" target="_blank">我的地址</a></li>
+      <li><a href="#" target="_blank">设置</a></li>
+      <li><a href="#" target="_blank">退出</a></li>
+    </ul>
+  </section>
+</nav>
+<main id="main" class="panel">
+    <!-- 遮罩 -->
+    <div class="shade" id="shade"></div>
+    <article>
+        <ul class="header flex flex-row flex-align-center">
+            <li style="margin-right:20px;width:26px;">
+                <button class="btn-hamburger" id="toggle-btn"></button>
+            </li>
+            <li class="flex-1 header-title">
+                名称
+            </li>
+            <li style="width:22px;padding:5px 15px;">
+                <img class="listtype" src="https://s1.ax1x.com/2017/12/13/bjnyj.png" alt="">
+            </li>
+        </ul>
+    </article>
+</main>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script type="text/javascript" src="dist/slideout.js"></script>
+<script type="text/javascript">
+    var flag = 1 //;是否登录；1：登录，0:未登录
+    if(flag == 1){
+        $("#toggle-btn").addClass("js-slideout-toggle")
+        if($("#toggle-btn").hasClass("js-slideout-toggle")){
+        // 左边菜单滑动-start
+            var slideout = new Slideout({
+                'panel': document.getElementById('main'),
+                'menu': document.getElementById('menu'),
+                'padding': 256,
+                'tolerance': 70
+            });
+            document.querySelector('.js-slideout-toggle').addEventListener('click', function() {
+                slideout.toggle();
+            });
+            // 点击遮罩，收回侧边栏
+            document.querySelector('.shade').addEventListener('click', function() {
+                slideout.toggle();
+            });
+            document.querySelector('.menu').addEventListener('click', function(eve) {
+                if (eve.target.nodeName === 'A') { slideout.close(); }
+            });
+        // 左边菜单滑动-end
+        }
+    }else{
+        $("#toggle-btn").removeClass("js-slideout-toggle");
+        $("#toggle-btn").click(function () {
+            alert("请登录");
+        })
+    }
+
+</script>
+</body>
+</html>
