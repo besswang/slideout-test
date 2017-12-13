@@ -1,0 +1,55 @@
+
+.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.flex-col{-webkit-box-orient:vertical;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}
+.flex-row{-webkit-box-orient:vertical;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}
+.flex-1{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;}
+.flex-align-center{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;}
+.flex-pack-center{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}
+.flex-pack-justify{-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
+.clear{clear:both; height:0; line-height:0; font-size:0; overflow:hidden;margin:0px;padding:0px;}
+ul,li{padding:0;margin:0;}
+li{list-style:none;}
+
+.header {
+  width: 100%;
+  border-bottom: 1px solid #d3d3d3;
+  padding: 6px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: #00a1e9;
+}
+.btn-hamburger {
+  width: 28px;
+  height: 28px;
+  border: none;
+  position: absolute;
+  top: 8px;
+  left: 15px;
+  outline: none;
+  background: url("https://s1.ax1x.com/2017/12/13/bjeSg.png") no-repeat center;
+  background-size: cover;
+  z-index: 10;
+}
+.header-title {
+  text-align: center;
+  color: #fff;
+}
+.listtype {
+  display: block;
+  width: 100%;
+}
+/* 遮罩 */
+.shade {
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: .5;
+  filter: Alpha(opacity=50);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 11;
+  display: none;
+}
